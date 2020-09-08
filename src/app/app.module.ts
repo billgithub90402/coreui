@@ -51,6 +51,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/authService';
 
+// spinner
+import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerOverlayWrapperComponent } from './spinner-overlay-wrapper/spinner-overlay-wrapper.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -79,7 +84,10 @@ import { AuthService } from './services/authService';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SpinnerOverlayComponent,
+    SpinnerComponent,
+    SpinnerOverlayWrapperComponent
   ],
   providers: [{
     provide: LocationStrategy,
@@ -87,6 +95,7 @@ import { AuthService } from './services/authService';
   },
     AuthService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ SpinnerOverlayComponent ]
 })
 export class AppModule { }

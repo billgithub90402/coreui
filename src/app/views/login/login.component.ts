@@ -9,6 +9,7 @@ import { AuthService } from '../../services/authService';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  isLoading = false;
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
@@ -28,11 +29,15 @@ export class LoginComponent implements OnInit {
     const val = this.form.value;
 
     if (val.username && val.password) {
+      this.isLoading = true;
       this.authService.login(val.username, val.password)
         .subscribe(
-          () => {
-            console.log('User is logged in');
-            this.router.navigateByUrl('/');
+          res => {
+            console.log(res);
+            setTimeout(() => {
+              this.isLoading = false;
+              this.router.navigateByUrl('/dashboard');
+            }, 3000);
           }
         );
     }

@@ -10,9 +10,11 @@ export class AuthService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<User>('/api/login', { username, password });
+        // return this.http.post<User>('/api/login', { username, password })
         // this is just the HTTP call,
         // we still need to handle the reception of the token
         // .shareReplay();
+
+        return this.http.post<any>('https://jsonplaceholder.typicode.com/posts', { title: 'Angular POST Request Example' });
     }
 }
