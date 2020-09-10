@@ -54,7 +54,6 @@ import { AuthService } from './services/authService';
 // spinner
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { SpinnerOverlayWrapperComponent } from './spinner-overlay-wrapper/spinner-overlay-wrapper.component';
 
 @NgModule({
   imports: [
@@ -86,8 +85,7 @@ import { SpinnerOverlayWrapperComponent } from './spinner-overlay-wrapper/spinne
     LoginComponent,
     RegisterComponent,
     SpinnerOverlayComponent,
-    SpinnerComponent,
-    SpinnerOverlayWrapperComponent
+    SpinnerComponent
   ],
   providers: [{
     provide: LocationStrategy,
