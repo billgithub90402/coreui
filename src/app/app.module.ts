@@ -45,7 +45,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
 
 // http
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // reactive forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +54,11 @@ import { AuthService } from './services/authService';
 // spinner
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
+
+// overlay
+import { OverlayModule } from '@angular/cdk/overlay';
+
 
 @NgModule({
   imports: [
@@ -75,7 +80,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HttpClientModule,
 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
+    OverlayModule
   ],
   declarations: [
     AppComponent,
@@ -91,9 +98,10 @@ import { SpinnerComponent } from './spinner/spinner.component';
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
+  { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     AuthService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ SpinnerOverlayComponent ]
+  entryComponents: [SpinnerOverlayComponent]
 })
 export class AppModule { }
